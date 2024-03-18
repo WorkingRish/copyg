@@ -1,0 +1,32 @@
+{
+    "manifest_version": 3,
+    "name": "OSTTRA Gmail Check",
+    "short_name": "OGSS",
+    "version": "1.4",
+    "author": "Rishabh.rawat@osttra.com",
+
+    "description": "Makes you confirm that you want to send emails to an external domain.",
+
+    "content_scripts": [
+        {
+            "matches": [ "*://mail.google.com/*" ],
+            "js": [
+                "src/extensionInjector.js"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+
+    "web_accessible_resources": [{
+        "resources": [
+            "dist/gmailJsLoader.js",
+            "dist/extension.js",
+            "dist/gmailJsLoader.js.map",
+            "dist/extension.js.map"
+        ],
+        "matches": ["<all_urls>"]
+    }],
+    "host_permissions": [
+        "https://mail.google.com/"
+    ]
+}
